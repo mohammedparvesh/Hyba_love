@@ -1,24 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Only For Hyba ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
 body{
 height:100vh;
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
+background:linear-gradient(135deg,#ff758c,#ff7eb3,#ff4e50,#ff6a88);
+background-size:400% 400%;
+animation:gradientMove 10s ease infinite;
 display:flex;
 justify-content:center;
 align-items:center;
 overflow:hidden;
 color:white;
 text-align:center;
+position:relative;
+}
+
+/* Background Image Overlay */
+body::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:url("photo.jpg") center/cover no-repeat;
+opacity:0.25; /* Adjust image visibility */
+z-index:-1;
+}
+
+/* Gradient animation */
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 /* Login */
@@ -29,6 +46,7 @@ border-radius:20px;
 backdrop-filter:blur(15px);
 }
 
+/* Inputs */
 input{
 padding:10px;
 border:none;
@@ -37,6 +55,7 @@ margin:15px 0;
 text-align:center;
 }
 
+/* Buttons */
 button{
 padding:10px 25px;
 border:none;
@@ -51,6 +70,7 @@ transition:0.3s;
 button:hover{
 background:#ff4f81;
 color:white;
+transform:scale(1.05);
 }
 
 /* Main Content */
@@ -91,84 +111,4 @@ animation:float 6s infinite ease-in;
 0%{transform:translateY(0);opacity:1;}
 100%{transform:translateY(-110vh);opacity:0;}
 }
-</style>
-</head>
-
-<body>
-
-<div class="login" id="loginBox">
-<h2>Private For Hyba ❤️</h2>
-<p>Enter our special place:</p>
-<input type="password" id="pass" placeholder="Hint: Where we met 😉">
-<br>
-<button onclick="check()">Enter My Love</button>
-</div>
-
-<div class="main" id="mainContent">
-<h1>Hyba ❤️</h1>
-
-<div class="typewriter" id="text"></div>
-
-<button onclick="showProposal()">One More Thing 💍</button>
-
-<div class="proposal" id="proposalText">
-No matter where life takes us…  
-From Sutherland office to forever,  
-Will you always be mine? ❤️
-</div>
-</div>
-
-<audio autoplay loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-function check(){
-let password=document.getElementById("pass").value.toLowerCase();
-if(password==="sutherland"){
-document.getElementById("loginBox").style.display="none";
-document.getElementById("mainContent").style.display="block";
-typeWriter();
-}else{
-alert("Wrong password ❤️ Try again.");
-}
-}
-
-let message="From the Sutherland office to the most beautiful love story of my life... Every smile you gave me there became my favorite memory. You turned normal office days into magical moments. Hyba, you are my peace, my happiness, and my forever.";
-
-let i=0;
-function typeWriter(){
-if(i<message.length){
-document.getElementById("text").innerHTML+=message.charAt(i);
-i++;
-setTimeout(typeWriter,40);
-}
-}
-
-function showProposal(){
-document.getElementById("proposalText").style.display="block";
-}
-
-/* Floating hearts */
-function createHeart(){
-const heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=Math.random()*20+10+"px";
-heart.style.animationDuration=Math.random()*3+3+"s";
-document.body.appendChild(heart);
-setTimeout(()=>{heart.remove();},6000);
-}
-setInterval(createHeart,500);
-</script>
-
-</body>
-</html>
-body {
-    margin: 0;
-    padding: 0;
-    background: url('photo.jpg') no-repeat center center fixed;
-    background-size: cover;
-}
-background: url('images/photo.jpg') no-repeat center center fixed;
+    </style>
