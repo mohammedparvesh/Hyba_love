@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Only For Hyba ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 *{
 margin:0;
@@ -14,26 +23,24 @@ align-items:center;
 overflow:hidden;
 color:white;
 text-align:center;
-position:relative;
 
-/* Gradient + Image Together */
+/* Background Image + Soft Pink Overlay */
 background:
-linear-gradient(135deg, rgba(255,117,140,0.6), rgba(255,126,179,0.6), rgba(255,78,80,0.6)),
+linear-gradient(135deg, rgba(255,117,140,0.6), rgba(255,126,179,0.6)),
 url("photo.jpg") no-repeat center center fixed;
 
 background-size:cover;
 }
 
-/* Login */
+/* Login Box */
 .login{
 background:rgba(255,255,255,0.2);
 padding:40px;
 border-radius:20px;
 backdrop-filter:blur(15px);
-z-index:2;
+box-shadow:0 0 20px rgba(0,0,0,0.2);
 }
 
-/* Inputs */
 input{
 padding:10px;
 border:none;
@@ -42,7 +49,6 @@ margin:15px 0;
 text-align:center;
 }
 
-/* Buttons */
 button{
 padding:10px 25px;
 border:none;
@@ -65,7 +71,7 @@ transform:scale(1.05);
 display:none;
 max-width:700px;
 padding:40px;
-z-index:2;
+animation:fadeIn 2s ease;
 }
 
 h1{
@@ -86,13 +92,20 @@ display:none;
 margin-top:20px;
 font-size:1.3rem;
 font-weight:bold;
+animation:fadeIn 2s ease;
+}
+
+/* Fade animation */
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
 }
 
 /* Floating Hearts */
 .heart{
 position:absolute;
 bottom:-50px;
-animation:float 6s infinite ease-in;
+animation:float 6s linear infinite;
 }
 
 @keyframes float{
@@ -100,3 +113,69 @@ animation:float 6s infinite ease-in;
 100%{transform:translateY(-110vh);opacity:0;}
 }
 </style>
+</head>
+
+<body>
+
+<div class="login" id="loginBox">
+<h2>Private For Hyba ❤️</h2>
+<p>Enter our special place:</p>
+<input type="password" id="pass" placeholder="Hint: Where we met 😉">
+<br>
+<button onclick="check()">Enter My Love</button>
+</div>
+
+<div class="main" id="mainContent">
+<h1>Hyba ❤️</h1>
+<div class="typewriter" id="text"></div>
+<button onclick="showProposal()">One More Thing 💍</button>
+<div class="proposal" id="proposalText">
+No matter where life takes us… <br>
+From Sutherland office to forever, <br>
+Will you always be mine? ❤️
+</div>
+</div>
+
+<script>
+function check(){
+let password=document.getElementById("pass").value.toLowerCase();
+if(password==="sutherland"){
+document.getElementById("loginBox").style.display="none";
+document.getElementById("mainContent").style.display="block";
+typeWriter();
+}else{
+alert("Wrong password ❤️ Try again.");
+}
+}
+
+let message="From the Sutherland office to the most beautiful love story of my life... Every smile you gave me there became my favorite memory. You turned normal office days into magical moments. Hyba, you are my peace, my happiness, and my forever.";
+
+let i=0;
+function typeWriter(){
+if(i<message.length){
+document.getElementById("text").innerHTML+=message.charAt(i);
+i++;
+setTimeout(typeWriter,40);
+}
+}
+
+function showProposal(){
+document.getElementById("proposalText").style.display="block";
+}
+
+/* Floating hearts */
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=Math.random()*20+10+"px";
+heart.style.animationDuration=Math.random()*3+3+"s";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},6000);
+}
+setInterval(createHeart,500);
+</script>
+
+</body>
+</html>
